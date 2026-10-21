@@ -1,0 +1,16 @@
+transaction_amount,transaction_type,customer_age,account_balance,merchant_category,is_fraud
+1200,Online,25.0,15000.0,Electronics,1
+50,POS,45.0,3000.0,Groceries,0
+3000,Online,35.0,25000.0,Travel,1
+400,ATM,50.0,4000.0,Cash Withdrawal,0
+5000,Online,29.0,50000.0,Luxury,1
+150,POS,40.0,3500.0,Groceries,0
+2500,ATM,33.0,20000.0,Travel,1
+90,POS,38.0,,Food,0
+7000,Online,31.0,60000.0,Luxury,1
+100,ATM,47.0,4500.0,Cash Withdrawal,0
+4300,Online,,30000.0,Electronics,1
+220,POS,36.0,5000.0,Food,0
+1500,ATM,44.0,18000.0,Travel,0
+8000,Online,28.0,70000.0,Luxury,1
+60,POS,52.0,25000.0,Groceries,0

@@ -1,0 +1,35 @@
+
+L
+.
+__dummy"
+__dummy_idJfraud_detection_project
+¿äôĞÀ’²¿äôĞÀ’²
+U
+5
+customer_id"customer_idJfraud_detection_project
+¤™õĞè³¦¤™õĞè³¦1"$79d4350d-16ac-4065-b5a4-fa11e46c1891*Û­õĞè©ùº2‘
+º
+fraud_featuresfraud_detection_projectcustomer_id"
+transaction_amount"
+account_balance"
+is_high_risk2€£: event_timestampZfraud_transactions.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢fraud_transactions.parquet’¤™õĞˆ»Ás"¤™õĞĞ¹ô¥@b
+customer_id’latestR
+¤™õĞ°Î¶¦Û­õĞ˜Î¾º
+€‹Ò»€±ï†
+€‹Ò»€±ï†
+€‹Ò»€±ï†R¶
+³
+,feast.infra.online_stores.sqlite.SqliteTable"‚
+XC:\Users\Edureka\Desktop\Fraud Detection\feature_store\feature_repo\data\online_store.db&fraud_detection_project_fraud_featuresbºevent_timestampZfraud_transactions.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢fraud_transactions.parquetªfraud_detection_project’¤™õĞˆ»Ás"¤™õĞĞ¹ô¥Š9
+
+fraud_detection_project
+¾äôĞøçÑ×¾äôĞøçÑ×’Ì
+É
+fraud_featuresfraud_detection_project"feature_view*Û
+º
+fraud_featuresfraud_detection_projectcustomer_id"
+transaction_amount"
+account_balance"
+is_high_risk2€£: event_timestampZfraud_transactions.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢fraud_transactions.parquet’¤™õĞˆ»Ás"¤™õĞĞ¹ô¥@b
+customer_id’latest
+¤™õĞ°Î¶¦¤™õĞ°Î¶¦2¤™õĞˆ­ı¦B$493e5842-7e09-4e94-b886-eb610faa4c57

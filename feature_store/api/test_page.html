@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fraud Detection Test Page</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --panel: #111827;
+        --panel-light: #1f2937;
+        --accent: #22c55e;
+        --accent-2: #38bdf8;
+        --text: #e5e7eb;
+        --muted: #94a3b8;
+        --danger: #ef4444;
+        --success: #16a34a;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, var(--bg), #1e293b);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        width: min(760px, 90vw);
+        background: rgba(17, 24, 39, 0.92);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 18px;
+        box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+        padding: 28px;
+      }
+      h1 {
+        margin-top: 0;
+        font-size: 2rem;
+      }
+      .controls {
+        display: grid;
+        grid-template-columns: 1fr 140px;
+        gap: 12px;
+        margin: 24px 0;
+      }
+      input, button, select {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(148,163,184,0.3);
+        font-size: 1rem;
+      }
+      input, select {
+        background: var(--panel-light);
+        color: var(--text);
+      }
+      button {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #06260f;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+      }
+      .result {
+        margin-top: 18px;
+        padding: 18px;
+        border-radius: 12px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148,163,184,0.2);
+      }
+      .result h2 {
+        margin-top: 0;
+      }
+      .status {
+        font-weight: bold;
+        color: var(--success);
+      }
+      .error {
+        color: var(--danger);
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      @media (max-width: 560px) {
+        .controls {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Fraud Detection Test Page</h1>
+      <p class="meta">Send a customer ID to the local fraud detection API and inspect the prediction result.</p>
+
+      <div class="controls">
+        <input id="customerId" type="number" value="1001" min="1" placeholder="Customer ID" />
+        <button id="predictBtn">Predict</button>
+      </div>
+
+      <div class="result">
+        <h2>Result</h2>
+        <div id="resultContent">Waiting for a prediction...</div>
+      </div>
+    </div>
+
+    <script>
+      const apiUrl = 'http://127.0.0.1:8000/predict';
+      const customerIdInput = document.getElementById('customerId');
+      const predictBtn = document.getElementById('predictBtn');
+      const resultContent = document.getElementById('resultContent');
+
+      async function predictFraud() {
+        const customerId = Number(customerIdInput.value);
+        if (!customerId) {
+          resultContent.innerHTML = '<span class="error">Please enter a valid customer ID.</span>';
+          return;
+        }
+
+        resultContent.innerHTML = 'Running prediction...';
+
+        try {
+          const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ customer_id: customerId })
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.detail || 'Prediction failed');
+          }
+
+          resultContent.innerHTML = `
+            <div class="status">${data.prediction}</div>
+            <div class="meta">
+              <strong>Customer ID:</strong> ${data.customer_id}<br>
+              <strong>Model:</strong> ${data.model_used}<br>
+              <strong>Inference backend:</strong> ${data.inference_backend}<br>
+              <strong>Transaction count:</strong> ${data.transaction_count}<br>
+              <strong>Average amount:</strong> $${Number(data.average_amount).toLocaleString(undefined, { maximumFractionDigits: 2 })}<br>
+              <strong>Total amount:</strong> $${Number(data.total_amount).toLocaleString(undefined, { maximumFractionDigits: 2 })}
+            </div>
+          `;
+        } catch (error) {
+          resultContent.innerHTML = `<span class="error">${error.message}</span>`;
+        }
+      }
+
+      predictBtn.addEventListener('click', predictFraud);
+      customerIdInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') predictFraud();
+      });
+      predictFraud();
+    </script>
+  </body>
+</html>

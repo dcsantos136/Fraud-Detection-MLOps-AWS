@@ -1,0 +1,27 @@
+{
+    "1003": {
+        "transaction_count": 88,
+        "total_amount": 251157,
+        "average_amount": 2854.06
+    },
+    "1001": {
+        "transaction_count": 103,
+        "total_amount": 260555,
+        "average_amount": 2529.66
+    },
+    "1004": {
+        "transaction_count": 111,
+        "total_amount": 289228,
+        "average_amount": 2605.66
+    },
+    "1005": {
+        "transaction_count": 118,
+        "total_amount": 318393,
+        "average_amount": 2698.25
+    },
+    "1002": {
+        "transaction_count": 103,
+        "total_amount": 253888,
+        "average_amount": 2464.93
+    }
+}

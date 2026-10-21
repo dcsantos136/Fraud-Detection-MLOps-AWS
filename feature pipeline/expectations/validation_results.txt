@@ -1,0 +1,5 @@
+[PASSED] Transaction Amount Validation
+[PASSED] Customer Age Validation
+[PASSED] Transaction Type Null Check
+[PASSED] Transaction Type Validation
+[PASSED] Account Balance Validation

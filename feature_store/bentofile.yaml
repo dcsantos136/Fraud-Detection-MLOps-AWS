@@ -1,0 +1,11 @@
+service: "bentoml_service.py:FraudDetectionService"
+labels:
+  owner: mlops
+  project: fraud-detection
+include:
+  - "bentoml_service.py"
+python:
+  packages:
+    - pandas
+    - scikit-learn
+    - bentoml

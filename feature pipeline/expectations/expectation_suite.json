@@ -1,0 +1,15 @@
+{
+    "transaction_amount": {
+        "min": 0,
+        "max": 100000
+    },
+    "customer_age": {
+        "min": 18,
+        "max": 100
+    },
+    "allowed_transaction_types": [
+        "Online",
+        "POS",
+        "ATM"
+    ]
+}
